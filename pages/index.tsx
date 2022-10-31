@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-[#F5F5F5] flex justify-center pt-[1.8rem] pb-16">
+      <main className="flex justify-center pt-[1.8rem] pb-16">
         <JobsList />
       </main>
     </div>

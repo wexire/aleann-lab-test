@@ -18,6 +18,14 @@ module.exports = {
         main: 'Proxima Nova',
         secondary: 'Roboto',
       },
+      height: {
+        imgDesktop: '5.3rem',
+        imgMobile: '4.15rem',
+      },
+      width: {
+        imgDesktop: '5.3rem',
+        imgMobile: '4.15rem',
+      },
     },
   },
   plugins: [],
