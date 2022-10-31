@@ -1,3 +1,6 @@
+@import url('http://fonts.cdnfonts.com/css/proxima-nova-2');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +9,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Proxima Nova", "Roboto", sans-serif;
+  font-family: sans-serif;
 }
 
 a {
