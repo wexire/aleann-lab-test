@@ -23,8 +23,8 @@ module.exports = {
         imgMobile: '4.15rem',
       },
       width: {
-        imgDesktop: '5.3rem',
-        imgMobile: '4.15rem',
+        imgDesktop: '5.8rem',
+        imgMobile: '5.65rem',
       },
     },
   },

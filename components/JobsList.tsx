@@ -1,13 +1,19 @@
 import React from 'react'
+import { IJob } from '../types'
 import JobItem from './JobItem'
 
-const JobsList = () => {
+const JobsList = ({ jobs }: IJobsListProps) => {
   return (
     <div className="w-[91.15%] flex flex-col gap-2">
-      <JobItem />
-      <JobItem />
+      {jobs.map((job) => (
+        <JobItem key={job.id} job={job} />
+      ))}
     </div>
   )
+}
+
+interface IJobsListProps {
+  jobs: IJob[]
 }
 
 export default JobsList

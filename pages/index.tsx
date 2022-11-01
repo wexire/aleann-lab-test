@@ -1,8 +1,10 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next'
 import Head from 'next/head'
 import JobsList from '../components/JobsList'
+import { getJobs } from '../services'
+import { IJob } from '../types'
 
-const Home: NextPage = () => {
+const Home: NextPage<IProps> = ({ jobs }: IProps) => {
   return (
     <div>
       <Head>
@@ -12,10 +14,23 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex justify-center pt-[1.8rem] pb-16">
-        <JobsList />
+        <JobsList jobs={jobs} />
       </main>
     </div>
   )
+}
+
+interface IProps {
+  jobs: IJob[]
+}
+
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<IProps>
+> => {
+  const jobs = await getJobs()
+  return {
+    props: { jobs },
+  }
 }
 
 export default Home
