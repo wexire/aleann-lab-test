@@ -1,10 +1,16 @@
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next'
 import Head from 'next/head'
+import { useState } from 'react'
 import JobsList from '../components/JobsList'
+import Pagination from '../components/Pagination'
+import { ITEMS_PER_PAGE } from '../consts'
 import { getJobs } from '../services'
 import { IJob } from '../types'
 
 const Home: NextPage<IProps> = ({ jobs }: IProps) => {
+  const [page, setPage] = useState(0)
+  const totalPages = Math.ceil(jobs.length / ITEMS_PER_PAGE)
+
   return (
     <div>
       <Head>
@@ -13,8 +19,9 @@ const Home: NextPage<IProps> = ({ jobs }: IProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex justify-center pt-[1.8rem] pb-16">
-        <JobsList jobs={jobs} />
+      <main className="flex mt-[1.8rem] mb-16 flex-col">
+        <JobsList jobs={jobs} page={page} />
+        <Pagination page={page} totalPages={totalPages} setPage={setPage} />
       </main>
     </div>
   )

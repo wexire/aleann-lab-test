@@ -6,12 +6,12 @@ import {
   bookmarkImage,
   ratingImage,
   mobileRatingImage,
-} from '../images'
+} from '../images/index'
 import { IJob } from '../types'
 
 const JobItem = ({ job }: IJobItemProps) => {
   return (
-    <div className="flex flex-row px-4 sm:py-6 py-3 w-full h-[10.25rem] bg-[#EFF0F5] sm:bg-white rounded-lg shadow-jobItem transition duration-500 transform hover:scale-95 cursor-pointer">
+    <div className="flex flex-row px-4 sm:py-6 py-3 w-full h-[10.25rem] bg-[#EFF0F5] sm:bg-white rounded-lg shadow-default transition duration-500 transform hover:scale-[98%] cursor-pointer">
       <div className="sm:mr-7 mr-5 sm:w-imgDesktop sm:h-imgDesktop w-imgMobile h-imgMobile mt-8 sm:mt-0 relative">
         <Image
           src={job.pictures[0]}
