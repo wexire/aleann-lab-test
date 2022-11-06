@@ -11,23 +11,23 @@ const Pagination = ({ page, totalPages, setPage }: IPaginationProps) => {
   pageNumArr.splice(pageNumArr.length - 1, 0, threeDotString)
 
   return (
-    <div className="mx-auto w-[32rem] h-[3.5rem] bg-white shadow-default rounded-[10px] relative flex items-center flex-row justify-center">
+    <div className="mx-auto w-[95%] sm:w-[32rem] h-[3.5rem] bg-white shadow-default rounded-[10px] relative flex items-center flex-row justify-center">
       <Image
         src={arrowImage}
         alt="arrow"
-        className="absolute left-6 cursor-pointer"
+        className="absolute left-6 cursor-pointer hidden sm:block"
         onClick={() => setPage(page === 0 ? 0 : page - 1)}
       />
       <Image
         src={arrowImage}
         alt="arrow"
-        className="rotate-180 absolute right-6 cursor-pointer"
+        className="rotate-180 absolute right-6 cursor-pointer hidden sm:block"
         onClick={() =>
           setPage(page === totalPages - 1 ? totalPages - 1 : page + 1)
         }
       />
-      <div className="border-r-[1.3px] h-8 absolute left-[4.25rem] border-lightGray" />
-      <div className="border-r-[1.3px] h-8 absolute right-[4.25rem] border-lightGray" />
+      <div className="border-r-[1.3px] h-8 absolute left-[4.25rem] border-lightGray hidden sm:block" />
+      <div className="border-r-[1.3px] h-8 absolute right-[4.25rem] border-lightGray hidden sm:block" />
       <div className="flex flex-row">
         {pageNumArr.map((pageNum, idx) =>
           typeof pageNum === 'number'
