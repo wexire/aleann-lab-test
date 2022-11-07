@@ -17,3 +17,11 @@ export interface IJob {
   description: string
   employment_type: string[]
 }
+
+export interface ILocationRes {
+  results: [
+    {
+      formatted_address: string
+    }
+  ]
+}

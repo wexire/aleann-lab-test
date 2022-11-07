@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import moment from 'moment'
 import {
   locationImage,
@@ -9,8 +9,15 @@ import {
 } from '../images/index'
 import { IJob } from '../types'
 import Link from 'next/link'
+import { geocodeCoords } from '../services/geocode'
 
 const JobItem = ({ job }: IJobItemProps) => {
+  const [location, setLocation] = useState('')
+  geocodeCoords(job.location).then((data) => {
+    const address = data.split(' ').slice(1).join(' ')
+    setLocation(address ? address : 'Not Found')
+  })
+
   return (
     <Link href={`/jobs/${job.id}`}>
       <div className="flex flex-row px-4 sm:py-6 py-3 w-full h-[10.25rem] bg-[#EFF0F5] sm:bg-white rounded-lg shadow-default transition duration-500 transform hover:scale-[98%] cursor-pointer">
@@ -34,7 +41,7 @@ const JobItem = ({ job }: IJobItemProps) => {
             <div className="flex flex-row">
               <Image src={locationImage} alt="location" />
               <span className="text-secondary font-main ml-2 text-base">
-                {`${job.location.lat}, ${job.location.long}`}
+                {location}
               </span>
             </div>
           </div>
