@@ -5,43 +5,50 @@ import {
   GetStaticPropsResult,
 } from 'next'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
-import React from 'react'
+import React, { useState } from 'react'
+import ContactCard from '../../components/ContactCard'
 import { bookmarkImage, shareImage } from '../../images'
 import { getJobs } from '../../services'
+import { geocodeCoords } from '../../services/geocode'
 import { IJob } from '../../types'
 
 const JobPage = ({ job }: IProps) => {
-  const router = useRouter()
-  if (router.isFallback) return <div>Loading...</div>
+  const [location, setLocation] = useState('')
+  geocodeCoords(job.location).then((data) => {
+    const address = data.split(' ').slice(1).join(' ')
+    setLocation(address ? address : 'Not Found')
+  })
 
   return (
-    <div className="ml-[22rem] mr-[19.5rem] mt-14 ">
-      <div className="w-[45.25rem] mb-2">
-        <div className="flex flex-row justify-between">
-          <div className="text-main text-[1.75rem] font-bold font-main">
-            Job Details
-          </div>
-          <div className="flex flex-row gap-8">
-            <div className="flex flex-row gap-4 font-secondary text-main text-lg items-center">
-              <Image src={bookmarkImage} alt="bookmark" />
-              Save to my list
+    <div className="bg-white h-screen">
+      <div className="mx-auto pt-14 flex flex-row gap-[8.4rem] w-max">
+        <div className="w-[45.25rem] mb-2">
+          <div className="flex flex-row justify-between">
+            <div className="text-main text-[1.75rem] font-bold font-main">
+              Job Details
             </div>
-            <div className="flex flex-row gap-4 font-secondary text-main text-lg items-center">
-              <Image src={shareImage} alt="share" />
-              Share
+            <div className="flex flex-row gap-8">
+              <div className="flex flex-row gap-4 font-secondary text-main text-lg items-center">
+                <Image src={bookmarkImage} alt="bookmark" />
+                Save to my list
+              </div>
+              <div className="flex flex-row gap-4 font-secondary text-main text-lg items-center">
+                <Image src={shareImage} alt="share" />
+                Share
+              </div>
             </div>
           </div>
+          <div className="border-b-[1px] border-main w-full opacity-[0.13]" />
         </div>
-        <div className="border-b-[1px] border-main w-full opacity-[0.13]" />
+        <ContactCard job={job} location={location} />
       </div>
     </div>
   )
 }
 
 interface IProps {
-  job: IJob | undefined
+  job: IJob
 }
 
 export const getStaticProps: GetStaticProps = async ({
@@ -49,7 +56,7 @@ export const getStaticProps: GetStaticProps = async ({
 }): Promise<GetStaticPropsResult<IProps>> => {
   const { id } = params as IParams
   const jobs = await getJobs()
-  const job = jobs.find((item) => item.id === id)
+  const job = jobs.find((item) => item.id === id) as IJob
   return {
     props: { job },
   }
@@ -68,7 +75,7 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
 

@@ -16,6 +16,8 @@ module.exports = {
         gray: '#70778B',
         lightGray: '#DEE3EF',
         brightBlue: '#5876C5',
+        whitishOne: '#E7EAF0',
+        whitishTwo: '#E8EBF3',
       },
       fontFamily: {
         main: 'Proxima Nova',
