@@ -1,6 +1,6 @@
 import React from 'react'
-import { ITEMS_PER_PAGE } from '../consts/index'
-import { IJob } from '../types'
+import { ITEMS_PER_PAGE } from '../../consts/index'
+import { IJob } from '../../types'
 import JobItem from './JobItem'
 
 const JobsList = ({ jobs, page }: IJobsListProps) => {

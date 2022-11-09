@@ -4,11 +4,10 @@ import {
   GetStaticProps,
   GetStaticPropsResult,
 } from 'next'
-import Image from 'next/image'
 import { ParsedUrlQuery } from 'querystring'
 import React, { useState } from 'react'
-import ContactCard from '../../components/ContactCard'
-import { bookmarkImage, shareImage } from '../../images'
+import ContactCard from '../../components/DetailsPage/ContactCard'
+import MainDetails from '../../components/DetailsPage/MainDetails'
 import { getJobs } from '../../services'
 import { geocodeCoords } from '../../services/geocode'
 import { IJob } from '../../types'
@@ -21,26 +20,9 @@ const JobPage = ({ job }: IProps) => {
   })
 
   return (
-    <div className="bg-white h-screen">
+    <div className="bg-white h-max">
       <div className="mx-auto pt-14 flex flex-row gap-[8.4rem] w-max">
-        <div className="w-[45.25rem] mb-2">
-          <div className="flex flex-row justify-between">
-            <div className="text-main text-[1.75rem] font-bold font-main">
-              Job Details
-            </div>
-            <div className="flex flex-row gap-8">
-              <div className="flex flex-row gap-4 font-secondary text-main text-lg items-center">
-                <Image src={bookmarkImage} alt="bookmark" />
-                Save to my list
-              </div>
-              <div className="flex flex-row gap-4 font-secondary text-main text-lg items-center">
-                <Image src={shareImage} alt="share" />
-                Share
-              </div>
-            </div>
-          </div>
-          <div className="border-b-[1px] border-main w-full opacity-[0.13]" />
-        </div>
+        <MainDetails job={job} />
         <ContactCard job={job} location={location} />
       </div>
     </div>

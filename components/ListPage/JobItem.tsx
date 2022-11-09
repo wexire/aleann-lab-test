@@ -6,10 +6,10 @@ import {
   bookmarkImage,
   ratingImage,
   mobileRatingImage,
-} from '../images/index'
-import { IJob } from '../types'
+} from '../../images/index'
+import { IJob } from '../../types'
 import Link from 'next/link'
-import { geocodeCoords } from '../services/geocode'
+import { geocodeCoords } from '../../services/geocode'
 
 const JobItem = ({ job }: IJobItemProps) => {
   const [location, setLocation] = useState('')

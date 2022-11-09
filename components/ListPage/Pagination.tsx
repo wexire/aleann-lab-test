@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React, { Dispatch, SetStateAction } from 'react'
-import { PAGE_BUTTON_SEEN_RADIUS } from '../consts'
-import { arrowImage } from '../images'
+import { PAGE_BUTTON_SEEN_RADIUS } from '../../consts'
+import { arrowImage } from '../../images'
 
 const Pagination = ({ page, totalPages, setPage }: IPaginationProps) => {
   const threeDotString = '...'
