@@ -4,7 +4,6 @@ import {
   GetStaticProps,
   GetStaticPropsResult,
 } from 'next'
-import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import React, { useState } from 'react'
 import AdditionalInfo from '../../components/DetailsPage/AdditionalInfo'
@@ -16,14 +15,11 @@ import { geocodeCoords } from '../../services/geocode'
 import { IJob } from '../../types'
 
 const JobPage = ({ job }: IProps) => {
-  const router = useRouter()
   const [location, setLocation] = useState('')
   geocodeCoords(job.location).then((data) => {
     const address = data.split(' ').slice(1).join(' ')
     setLocation(address ? address : 'Not Found')
   })
-
-  if (router.isFallback) return <div>Loading...</div>
 
   return (
     <div className="bg-white h-full w-full">
@@ -71,7 +67,7 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
 

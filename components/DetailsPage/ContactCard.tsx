@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React, { useMemo } from 'react'
 import { useLoadScript, GoogleMap, MarkerF } from '@react-google-maps/api'
-import { locationImage, mapMarkerImage } from '../../images'
+import { locationImage } from '../../images'
 import { IJob } from '../../types'
 import { mapSettings } from '../../utils/mapSettings'
 
@@ -53,7 +53,7 @@ const ContactCard = ({ job, location }: IContactCardProps) => {
             styles: mapSettings,
           }}
         >
-          <MarkerF position={position} icon={mapMarkerImage} />
+          <MarkerF position={position} icon={'./mapMarker.svg'} />
         </GoogleMap>
       </div>
     </>
