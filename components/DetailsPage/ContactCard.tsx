@@ -5,10 +5,15 @@ import { locationImage, mapMarkerImage } from '../../images'
 import { IJob } from '../../types'
 import { mapSettings } from '../../utils/mapSettings'
 
-const ContactCard = ({ job, location }: { job: IJob; location: string }) => {
+interface IContactCardProps {
+  job: IJob
+  location: string
+}
+
+const ContactCard = ({ job, location }: IContactCardProps) => {
   const position = useMemo(
     () => ({ lat: job.location.lat, lng: job.location.long }),
-    []
+    [job.location.lat, job.location.long]
   )
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_TOKEN,
