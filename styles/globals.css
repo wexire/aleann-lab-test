@@ -25,3 +25,15 @@ a {
 .customSquare {
   list-style-image: url('../images/squareDecorator.svg');
 }
+
+@media (max-width: 480px) {
+  .customSquare {
+    position: relative;
+    left: 15px;
+  }
+
+  .customSquare span {
+    position: relative;
+    left: 15px;
+  }
+}

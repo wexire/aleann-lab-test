@@ -10,14 +10,14 @@ interface IAdditionalInfoProps {
 
 const AdditionalInfo = ({ job }: IAdditionalInfoProps) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex sm:flex-col flex-col-reverse">
       <div className="mb-[5.375rem]">
         <div className="text-main text-[1.75rem] font-bold font-main">
           Additional info
         </div>
         <div className="border-b-[1px] border-main w-full opacity-[0.13] mb-4" />
         <div className="flex flex-col mb-6">
-          <span className="text-main text-lg font-secondary mb-2">
+          <span className="sm:text-main text-lg font-secondary mb-2 text-[rgba(56, 65, 93)] opacity-[0.82]">
             Employment type
           </span>
           <div className="flex flex-row gap-2">
@@ -27,7 +27,7 @@ const AdditionalInfo = ({ job }: IAdditionalInfoProps) => {
           </div>
         </div>
         <div className="flex flex-col">
-          <span className="text-main text-lg font-secondary mb-2">
+          <span className="sm:text-main text-lg font-secondary mb-2 text-[rgba(56, 65, 93)] opacity-[0.82]">
             Benefits
           </span>
           <div className="flex flex-row gap-2">

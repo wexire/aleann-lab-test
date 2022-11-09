@@ -4,6 +4,7 @@ import {
   GetStaticProps,
   GetStaticPropsResult,
 } from 'next'
+import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import React, { useState } from 'react'
 import AdditionalInfo from '../../components/DetailsPage/AdditionalInfo'
@@ -15,21 +16,28 @@ import { geocodeCoords } from '../../services/geocode'
 import { IJob } from '../../types'
 
 const JobPage = ({ job }: IProps) => {
+  const router = useRouter()
   const [location, setLocation] = useState('')
   geocodeCoords(job.location).then((data) => {
     const address = data.split(' ').slice(1).join(' ')
     setLocation(address ? address : 'Not Found')
   })
 
+  if (router.isFallback) return <div>Loading...</div>
+
   return (
-    <div className="bg-white h-max">
-      <div className="mx-auto pt-14 py-44 flex flex-row gap-[8.4rem] w-max">
-        <div className="flex flex-col w-[45.25rem]">
+    <div className="bg-white h-full w-full">
+      <div className="mx-auto sm:pt-14 pt-6 sm:pb-44 pb-12 flex sm:flex-row flex-col sm:gap-[8.4rem] sm:w-max w-full">
+        <div className="flex flex-col sm:w-[45.25rem] w-[88%] mx-auto">
           <MainDetails job={job} />
           <AdditionalInfo job={job} />
-          <ReturnButton />
+          <div className="sm:block hidden">
+            <ReturnButton />
+          </div>
         </div>
-        <ContactCard job={job} location={location} />
+        <div className="sm:mx-0 mx-auto">
+          <ContactCard job={job} location={location} />
+        </div>
       </div>
     </div>
   )
@@ -63,7 +71,7 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }
 

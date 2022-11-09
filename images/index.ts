@@ -6,6 +6,7 @@ import arrowImage from './arrow.svg'
 import shareImage from './share.svg'
 import mapMarkerImage from './mapMarker.svg'
 import detailsArrowImage from './detailsArrow.svg'
+import starImage from './star.svg'
 
 export {
   locationImage,
@@ -16,4 +17,5 @@ export {
   shareImage,
   mapMarkerImage,
   detailsArrowImage,
+  starImage,
 }
