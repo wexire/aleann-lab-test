@@ -6,7 +6,9 @@ import {
 } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import React, { useState } from 'react'
+import AdditionalInfo from '../../components/DetailsPage/AdditionalInfo'
 import ContactCard from '../../components/DetailsPage/ContactCard'
+import { ReturnButton } from '../../components/DetailsPage/DetailsButtons'
 import MainDetails from '../../components/DetailsPage/MainDetails'
 import { getJobs } from '../../services'
 import { geocodeCoords } from '../../services/geocode'
@@ -21,8 +23,12 @@ const JobPage = ({ job }: IProps) => {
 
   return (
     <div className="bg-white h-max">
-      <div className="mx-auto pt-14 flex flex-row gap-[8.4rem] w-max">
-        <MainDetails job={job} />
+      <div className="mx-auto pt-14 py-44 flex flex-row gap-[8.4rem] w-max">
+        <div className="flex flex-col w-[45.25rem]">
+          <MainDetails job={job} />
+          <AdditionalInfo job={job} />
+          <ReturnButton />
+        </div>
         <ContactCard job={job} location={location} />
       </div>
     </div>

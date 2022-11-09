@@ -5,6 +5,7 @@ import bookmarkImage from './bookmark.svg'
 import arrowImage from './arrow.svg'
 import shareImage from './share.svg'
 import mapMarkerImage from './mapMarker.svg'
+import detailsArrowImage from './detailsArrow.svg'
 
 export {
   locationImage,
@@ -14,4 +15,5 @@ export {
   arrowImage,
   shareImage,
   mapMarkerImage,
+  detailsArrowImage,
 }

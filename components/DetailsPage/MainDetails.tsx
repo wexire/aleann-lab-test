@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { bookmarkImage, shareImage } from '../../images'
 import { IJob } from '../../types'
-import DetailsButton from './DetailsButton'
+import DetailsButton from './DetailsButtons'
 
 interface IMainDetailsProps {
   job: IJob
@@ -11,7 +11,7 @@ interface IMainDetailsProps {
 
 const MainDetails = ({ job }: IMainDetailsProps) => {
   return (
-    <div className="w-[45.25rem] mb-20">
+    <div className="mb-20">
       <div className="flex flex-row justify-between">
         <div className="text-main text-[1.75rem] font-bold font-main">
           Job Details
